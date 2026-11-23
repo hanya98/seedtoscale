@@ -63,7 +63,7 @@ function loadTasks() {
         }, err => {
             console.warn('Tasks load error:', err.message);
             // Fallback to local storage if Firebase fails or offline
-            const stored = localStorage.getItem('civitas_tasks');
+            const stored = localStorage.getItem('nivaran_tasks');
             if (stored) {
                 allTasks = JSON.parse(stored);
                 renderTasks();
@@ -73,7 +73,7 @@ function loadTasks() {
 }
 
 function saveTasks() {
-    localStorage.setItem('civitas_tasks', JSON.stringify(allTasks));
+    localStorage.setItem('nivaran_tasks', JSON.stringify(allTasks));
 }
 
 /* ── STATS ── */
@@ -264,7 +264,7 @@ function renderGrievances() {
 /* ── ATTENDANCE ── */
 function renderAttendance() {
     document.getElementById('attendance-date').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
-    const stored = JSON.parse(localStorage.getItem('civitas_attendance') || '{}');
+    const stored = JSON.parse(localStorage.getItem('nivaran_attendance') || '{}');
     const today = new Date().toISOString().split('T')[0];
     const tbody = document.getElementById('attendance-tbody');
     tbody.innerHTML = workers.map(w => {

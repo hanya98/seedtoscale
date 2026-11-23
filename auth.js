@@ -1,5 +1,5 @@
 /**
- * auth.js — Shared authentication utilities for CIVITAS
+ * auth.js — Shared authentication utilities for NIVARAN
  *
  * Storage keys:
  *   sessionStorage['citizen_mobile']       → set when citizen logs in

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Field Worker Portal — CIVITAS</title>
+    <title>Field Worker Portal — NIVARAN</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
@@ -694,7 +694,7 @@
         document.getElementById('att-date').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'short', day: '2-digit', month: 'long' });
 
         function checkAttendance() {
-            const stored = JSON.parse(localStorage.getItem('civitas_attendance') || '{}');
+            const stored = JSON.parse(localStorage.getItem('nivaran_attendance') || '{}');
             const marked = stored[today]?.[workerMobile];
             const pill = document.getElementById('att-status-pill');
             const btn = document.getElementById('mark-att-btn');
@@ -712,11 +712,11 @@
         }
 
         document.getElementById('mark-att-btn').addEventListener('click', () => {
-            const stored = JSON.parse(localStorage.getItem('civitas_attendance') || '{}');
+            const stored = JSON.parse(localStorage.getItem('nivaran_attendance') || '{}');
             if (!stored[today]) stored[today] = {};
             const time = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
             stored[today][workerMobile] = { status: 'present', time, name: workerName };
-            localStorage.setItem('civitas_attendance', JSON.stringify(stored));
+            localStorage.setItem('nivaran_attendance', JSON.stringify(stored));
 
             // Sync to Firebase if online
             if (isOnline && window.db) {
@@ -730,7 +730,7 @@
 
         function loadTasks() {
             // Always try to load from localStorage first for immediate display (offline support)
-            const stored = localStorage.getItem('civitas_tasks_' + workerMobile);
+            const stored = localStorage.getItem('nivaran_tasks_' + workerMobile);
             if (stored) {
                 allTasks = JSON.parse(stored);
                 renderTasks();
@@ -744,7 +744,7 @@
                         // Sort by createdAt desc
                         allTasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
                         // Save local backup for this specific worker
-                        localStorage.setItem('civitas_tasks_' + workerMobile, JSON.stringify(allTasks));
+                        localStorage.setItem('nivaran_tasks_' + workerMobile, JSON.stringify(allTasks));
                         renderTasks();
                         renderHistory();
                         renderAlerts();
@@ -757,7 +757,7 @@
             const localIdx = allTasks.findIndex(t => t.id === taskId);
             if (localIdx !== -1) {
                 allTasks[localIdx].status = newStatus;
-                localStorage.setItem('civitas_tasks_' + workerMobile, JSON.stringify(allTasks));
+                localStorage.setItem('nivaran_tasks_' + workerMobile, JSON.stringify(allTasks));
             }
 
             // Sync if online, otherwise queue it
@@ -775,11 +775,11 @@
         }
 
         function queueOfflineTaskUpdate(taskId, newStatus) {
-            const pending = JSON.parse(localStorage.getItem('civitas_pending_sync_' + workerMobile) || '[]');
+            const pending = JSON.parse(localStorage.getItem('nivaran_pending_sync_' + workerMobile) || '[]');
             // Remove previous updates for same task to prevent redundant queues
             const cleaned = pending.filter(x => x.taskId !== taskId);
             cleaned.push({ type: 'task_status', taskId, newStatus, at: new Date().toISOString() });
-            localStorage.setItem('civitas_pending_sync_' + workerMobile, JSON.stringify(cleaned));
+            localStorage.setItem('nivaran_pending_sync_' + workerMobile, JSON.stringify(cleaned));
         }
 
         function renderTasks() {
@@ -872,7 +872,7 @@
         /* ── OFFLINE SYNC ── */
         window.addEventListener('online', () => {
             updateOnlineStatus();
-            const pendingKey = 'civitas_pending_sync_' + workerMobile;
+            const pendingKey = 'nivaran_pending_sync_' + workerMobile;
             const pending = JSON.parse(localStorage.getItem(pendingKey) || '[]');
             if (pending.length > 0 && window.db) {
                 pending.forEach(item => {

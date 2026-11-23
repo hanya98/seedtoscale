@@ -1,7 +1,7 @@
-// sw.js — CIVITAS Field Worker Service Worker
+// sw.js — NIVARAN Field Worker Service Worker
 // Caches static assets and enables offline fallback
 
-const CACHE_NAME = 'civitas-worker-v1';
+const CACHE_NAME = 'nivaran-worker-v1';
 const STATIC_ASSETS = [
     '/worker.html',
     '/auth.js',

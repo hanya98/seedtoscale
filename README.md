@@ -1,6 +1,6 @@
-# Civitas - Public Grievance Management System (PGMS 2.0)
+# Nivaran - Public Grievance Management System (PGMS 2.0)
 
-**Civitas** is a state-of-the-art, AI-powered digital platform designed to bridge the gap between citizens and government authorities. It provides a centralized ecosystem for lodging grievances, tracking public development, and fostering transparent governance.
+**Nivaran** is a state-of-the-art, AI-powered digital platform designed to bridge the gap between citizens and government authorities. It provides a centralized ecosystem for lodging grievances, tracking public development, and fostering transparent governance.
 
 ---
 
@@ -22,7 +22,7 @@
 - **Poll Management**: Create and manage local polls to gather citizen sentiment on specific issues or pincodes.
 
 ## 🤖 AI Integration (Gemini 2.0)
-Civitas leverages Google’s **Gemini 2.0 Flash** to automate complex administrative tasks:
+Nivaran leverages Google’s **Gemini 2.0 Flash** to automate complex administrative tasks:
 - **Priority Assessment**: Analyzes descriptions to detect life-threatening or urgent risks, escalating them to "High" priority.
 - **Automated Assignment**: Dynamically assigns tasks to specific roles (e.g., "Field Inspector") based on the complaint category and location.
 - **Intelligent Routing**: Factors in repeat reports for automatic escalation of chronic issues.

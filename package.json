@@ -1,7 +1,7 @@
 {
-  "name": "civitas",
+  "name": "nivaran",
   "version": "1.0.0",
-  "description": "Civitas App",
+  "description": "Nivaran App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

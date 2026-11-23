@@ -32,7 +32,7 @@ function fmtAmount(n) { return '₹' + Number(n).toLocaleString('en-IN'); }
 /* ── LOAD BILLS ── */
 function loadBills() {
   // Local fallback
-  const stored = localStorage.getItem('civitas_bills_' + contractorId);
+  const stored = localStorage.getItem('nivaran_bills_' + contractorId);
   if (stored) {
     bills = JSON.parse(stored);
   } else {
@@ -63,7 +63,7 @@ function loadBills() {
 }
 
 function saveBills() {
-  localStorage.setItem('civitas_bills_' + contractorId, JSON.stringify(bills));
+  localStorage.setItem('nivaran_bills_' + contractorId, JSON.stringify(bills));
 }
 
 /* ── RENDER STATS ── */
@@ -227,7 +227,7 @@ function generateInvoiceHTML(bill) {
     <div style="margin-bottom:16px">
       <div style="font-size:0.75rem;color:#718096;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Bill To</div>
       <strong>Government of India — ${bill.projectName}</strong><br>
-      <span style="font-size:0.82rem;color:#718096">CIVITAS Grievance & Workforce Management Portal</span>
+      <span style="font-size:0.82rem;color:#718096">NIVARAN Grievance & Workforce Management Portal</span>
     </div>
     <table>
       <thead><tr><th>Description</th><th>Category</th><th>Bill Date</th><th style="text-align:right">Amount</th></tr></thead>
@@ -239,7 +239,7 @@ function generateInvoiceHTML(bill) {
     <div class="inv-total">Total Payable: ${fmtAmount(bill.amount)}</div>
     <div class="inv-footer">
       This is a computer-generated invoice. No signature required.<br>
-      CIVITAS · Civic Technology Platform · Government of India
+      NIVARAN · Civic Technology Platform · Government of India
     </div>
   </div>`;
 }
